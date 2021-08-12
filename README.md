@@ -1,2 +1,2 @@
-# NER_Flask_Spacy
- Named Entity Recognition in Flask using Spacy
+# NER_Spacy_flask
+ Named Entity Recognition implemented in Flask Using Spacy
