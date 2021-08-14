@@ -1,4 +1,5 @@
 from flask import Flask, Response, request
+#from flask_restful import Resource, Api
 import json
 from NamedEntity import *
 
@@ -12,11 +13,13 @@ def get_status():
 def get_help():
     return Response(json.dumps(
         {
-         "sample input body": { "text": "Anisha, who is the daughter of Ahmednagar Member of Parliament Dr Sujay Vikhe Patil and the grandaughter of veteran Maharashtra leader" , 
-         "To test sample text NER": {"add to url": "/api/sample_entities"},
-         "To do NER using POST request (text in body)": {"url": "/api/entitites"}
-         }
-         }
+         "text": "Anisha, who is the daughter of Ahmednagar Member of Parliament Dr Sujay Vikhe Patil and the grandaughter of veteran Maharashtra leader" 
+	, 
+    "To test sample text NER add to url": "/api/sample_entities"
+	,
+    "To do NER using POST request (text in body)": "/api/entities",
+    "this uses" : "en_core_web_trf model"
+    }
     ), status=200, mimetype='application/json')
 
 @app.route("/api/entities", methods=["POST"])
@@ -35,4 +38,4 @@ def predict_entity_sm():
     return Response(json.dumps(entity_dict), status=200, mimetype='application/json')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port = 80, debug=True, threaded=True)
+    app.run(host='0.0.0.0', port = 8080, debug=True, threaded=True)
